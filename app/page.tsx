@@ -4,7 +4,6 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { SiLeetcode, SiGeeksforgeeks, SiGmail } from "react-icons/si";
 import { FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
-import { profile } from "console";
 const GitHubCalendar = dynamic(() => import("react-github-calendar").then((mod) => mod.GitHubCalendar), { ssr: false });
 export default function Home() {
   const skills: string[] = ["C++", "Python", "JavaScript", "HTML", "React.js", "Next.js", "Express.js", "Tailwind CSS", "Bootstrap", "GitHub", "Node.js", "MongoDB", "Judge0", "MySQL", "Git", "Netlify", "CSS", "Typescript", "JWT", "FastAPI", "Vercel", "Firebase", "Redux", "Ubuntu", "Sass", "Postman", "Bootstrap", "NPM", "PHP"];
@@ -77,7 +76,7 @@ export default function Home() {
   const projects = [
     {
       name: "CodeBite",
-      about: "An AI-integrated online IDE to write, run, and manage code in your browser, no setup required",
+      about: "An AI-integrated online IDE to write, run, and manage code directly in your browser, with built-in AI coding assistance and no setup required.",
       url: "https://codebite-onlineide-puneeth.vercel.app/",
       github: "https://github.com/nameispuneeth/CodeBite",
       techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "Judge0", "TailwindCSS", "Gemini API", "NodeMailer"],
@@ -147,14 +146,27 @@ export default function Home() {
     else return <FaLinkedin size={20} />
   }
   return (
-    <div className="flex-1 flex justify-center py-8 min-h-screen bg-slate-100">
-      <div className="bg-white px-8 py-4 rounded-xl max-w-2xl space-y-8 mt-10 mb-10">
+    <div className="flex-1 flex justify-center py-8 min-h-screen mb-8 bg-slate-100">
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          backgroundColor: "#fafafa",
+          backgroundImage: `
+            linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)
+          `,
+          backgroundSize: "40px 40px",
+          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+        }}
+      />
+      <div className="relative z-10 bg-white px-8 py-4 rounded-xl max-w-3xl space-y-10 mt-10 mb-10">
         <div className="flex justify-between gap-4 sm:gap-12 mt-4">
           <div className="space-y-3">
             <h1 className="text-2xl sm:text-4xl font-semibold">Hi, I'm Puneeth</h1>
             <p className="text-[13px] sm:text-[14px] font-light">I'm 20, a full-stack developer, and I love building things that actually get used.</p>
           </div>
-          <img className="w-24 h-24 object-contain rounded-full" src="/favicon.ico" alt="Puneeth" />
+          <img className="w-20 h-20 object-contain rounded-full" src="/favicon.ico" alt="Puneeth" />
         </div>
         <div>
           <p className="text-xl sm:text-2xl font-semibold">About me</p>
@@ -235,8 +247,8 @@ export default function Home() {
           <p className="text-xl sm:text-2xl font-semibold">Projects</p>
           <div className="grid grid-cols-1 md:grid-cols-2">
             {projects.map((item, ind) => (
-              <div className="border border-gray-300 mr-1 ml-1 mb-2 mt-2 rounded-md" key={ind}>
-                <img className="w-full object-contain rounded-t-md" src={item.hero} alt={item.name} />
+              <div className="border border-gray-300 mr-1 ml-1 mb-2 mt-2 rounded-md hover:shadow-xl cursor-pointer" key={ind}>
+                <img className="w-full object-contain rounded-t-md grayscale-95 hover:grayscale-0 hover:brightness-100 " src={item.hero} alt={item.name} />
                 <div className="p-2 space-y-3">
                   <div className="flex items-center justify-between">
                     <p className="font-semibold">{item.name}</p>
@@ -302,7 +314,7 @@ export default function Home() {
 
 
       </div>
-      <div className="fixed items-center bottom-6 bg-white/80 backdrop-blur-md border border-gray-200 shadow-xl px-4 py-2 rounded-full flex gap-2 transition-all duration-300">
+      <div className="fixed z-10 items-center bottom-6 bg-white/80 backdrop-blur-md border border-gray-200 shadow-xl px-4 py-2 rounded-full flex gap-2 transition-all duration-300">
         <div className="group relative">
           <a href="https://drive.google.com/file/d/16JtrpDo-y9_V2cuWCaSrP_JO1RgVccYU/view?usp=drive_link" target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-125 hover:mx-2 hover:-translate-y-1">
             <FileText strokeWidth={2} className="text-gray-700 cursor-pointer" />
