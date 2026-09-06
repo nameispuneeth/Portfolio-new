@@ -120,7 +120,7 @@ export default function ProjectDetails() {
                                 </p>
                             </Link>
                             <div className="flex w-full justify-between mb-7 mt-3">
-                                <p className="text-3xl text-left font-semibold cursor-pointer capitalize">{slug}</p>
+                                <p className="text-2xl sm:text-4xl text-left cormorant font-black capitalize ">{slug}</p>
 
                             </div>
                             <img src={projects?.[slug || "codebite"]?.hero} alt="" className="w-full h-auto object-cover rounded-lg" />
@@ -138,13 +138,16 @@ export default function ProjectDetails() {
                                         <div key={index} className="flex items-center gap-2">
                                             <p className="text-md text-gray-600 font-semibold" >{key}:</p>
                                             {projects?.[slug || "codebite"]?.techstack[key].map((stack: string, index: number) => (
-                                                <p key={index} className="text-md text-gray-600 font-light" >{stack}</p>
+                                                <div className="flex items-center gap-1" key={index}>
+                                                    <p className="text-md text-gray-600 font-light" >{stack}</p>
+                                                    {index !== projects?.[slug || "codebite"]?.techstack[key].length - 1 && <p>•</p>}
+                                                </div>
                                             ))}
                                         </div>
                                     ))
                                 }
                             </div>
-                            <div className="fixed z-10 items-center bottom-6 bg-white/80 backdrop-blur-md border border-gray-200 shadow-xl px-4 py-2 rounded-full flex gap-4 transition-all duration-300">
+                            <div className="fixed z-10 left-1/2 -translate-x-1/2 items-center bottom-6 bg-white/80 backdrop-blur-md border border-gray-200 shadow-xl px-4 py-2 rounded-full flex gap-4 transition-all duration-300">
                                 {projects[slug].github && <a href={projects[slug].github} target="_blank" className="text-md font-semibold cursor-pointer">Github</a>}
                                 {projects[slug].demo && projects[slug].github && <div className="border-l border-gray-300 h-6" />}
                                 {projects[slug].demo && <a href={projects[slug].demo} target="_blank" className="text-md font-semibold cursor-pointer">Demo</a>}

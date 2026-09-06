@@ -4,9 +4,11 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { SiLeetcode, SiGeeksforgeeks, SiGmail } from "react-icons/si";
 import { FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 const GitHubCalendar = dynamic(() => import("react-github-calendar").then((mod) => mod.GitHubCalendar), { ssr: false });
 export default function Home() {
+  const router = useRouter();
   const skills: string[] = ["C++", "Python", "JavaScript", "HTML", "React.js", "Next.js", "Express.js", "Tailwind CSS", "Bootstrap", "GitHub", "Node.js", "MongoDB", "Judge0", "MySQL", "Git", "Netlify", "CSS", "Typescript", "JWT", "FastAPI", "Vercel", "Firebase", "Redux", "Ubuntu", "Sass", "Postman", "Bootstrap", "NPM", "PHP"];
   const iconSlugMap: Record<string, string> = {
     "C++": "cplusplus",
@@ -161,24 +163,30 @@ export default function Home() {
           WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
         }}
       />
-      <div className="relative z-10 bg-white px-8 py-4 rounded-xl max-w-3xl space-y-10 mt-10 mb-10">
+      <div className="relative z-10 bg-white px-8 py-4 rounded-xl max-w-3xl space-y-5 mt-10 mb-10">
         <div className="flex justify-between gap-4 sm:gap-12 mt-4">
-          <div className="space-y-3">
-            <h1 className="text-2xl sm:text-4xl font-semibold">Hi, I'm Puneeth</h1>
-            <p className="text-[13px] sm:text-[14px] font-light">I'm 20, a full-stack developer, and I love building things that actually get used.</p>
+          <div className="space-y-1.5 mt-2">
+            <h1 className="text-4xl sm:text-5xl font-normal cormorant text-[#1a1a1a] tracking-tight">Hi, I'm Puneeth</h1>
+            <p className="text-[13px] sm:text-[14px] font-light text-gray-600 pt-2">I'm 20, a full-stack developer, and I love building things that actually get used.</p>
           </div>
           <img className="w-20 h-20 object-contain rounded-full" src="/favicon.ico" alt="Puneeth" />
         </div>
+
         <div>
-          <p className="text-xl sm:text-2xl font-semibold">About me</p>
+          <p className="text-xl sm:text-2xl font-medium mt-5 cormorant">About me</p>
           <ul className="space-y-2 mt-2 list-disc list-inside text-gray-700" typeof="bullets">
             {about.map((item, index) => (
               <li key={index} className="text-[13px] sm:text-[14px] font-light">{item}</li>
             ))}
           </ul>
         </div>
+
+        <div className="w-full h-[1px] bg-gray-200" />
+
+
+
         <div className="space-y-2">
-          <p className="text-xl sm:text-2xl font-semibold">Work Experience</p>
+          <p className="text-xl sm:text-2xl mb-5 cormorant">Work Experience</p>
           {workExp.map((item, index) => (
             <div key={index} className="mt-2">
               <div className="flex justify-between gap-2">
@@ -214,8 +222,11 @@ export default function Home() {
           ))}
         </div>
 
+        <div className="w-full h-[1px] bg-gray-200" />
+
+
         <div className="space-y-3">
-          <p className="text-xl sm:text-2xl font-semibold">Education</p>
+          <p className="text-xl sm:text-2xl font-medium cormorant">Education</p>
           {education.map((item, index) => (
             <div key={index} className="mt-2">
               <div className="flex justify-between gap-2">
@@ -244,11 +255,14 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        <div className="w-full h-[1px] bg-gray-200" />
+
         <div className="space-y-2">
-          <p className="text-xl sm:text-2xl font-semibold">Projects</p>
+          <p className="text-xl sm:text-2xl font-medium cormorant">Projects</p>
           <div className="grid grid-cols-1 md:grid-cols-2">
             {projects.map((item, ind) => (
-              <div className="border border-gray-300 mr-1 ml-1 mb-2 mt-2 rounded-md hover:shadow-xl cursor-pointer" key={ind}>
+              <div className="border border-gray-300 mr-1 ml-1 mb-2 mt-2 rounded-md hover:shadow-xl cursor-pointer" key={ind} onClick={() => router.push(`/${item.name.toLowerCase()}`)}>
                 <img className="w-full object-contain rounded-t-md grayscale-95 hover:grayscale-90 hover:brightness-100 " src={item.hero} alt={item.name} />
                 <div className="p-2 space-y-3">
                   <div className="flex items-center justify-between">
@@ -276,8 +290,11 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        <div className="w-full h-[1px] bg-gray-200" />
+
         <div className="space-y-4">
-          <p className="text-xl sm:text-2xl font-semibold">Contributions</p>
+          <p className="text-xl sm:text-2xl font-medium cormorant">Contributions</p>
           <div>
             <GitHubCalendar
               username="nameispuneeth"
@@ -292,8 +309,11 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="w-full h-[1px] bg-gray-200" />
+
+
         <div className="space-y-4 mb-5">
-          <p className="text-xl sm:text-2xl font-semibold">Skills</p>
+          <p className="text-xl sm:text-2xl font-medium cormorant">Skills</p>
           <div className="w-full overflow-hidden flex flex-col gap-4">
             <div className="marquee-track gap-4">
               {[0, 1, 2, 3, 4, 5].map((i) =>
