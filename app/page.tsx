@@ -4,6 +4,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { SiLeetcode, SiGeeksforgeeks, SiGmail } from "react-icons/si";
 import { FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
+import Link from "next/link";
 const GitHubCalendar = dynamic(() => import("react-github-calendar").then((mod) => mod.GitHubCalendar), { ssr: false });
 export default function Home() {
   const skills: string[] = ["C++", "Python", "JavaScript", "HTML", "React.js", "Next.js", "Express.js", "Tailwind CSS", "Bootstrap", "GitHub", "Node.js", "MongoDB", "Judge0", "MySQL", "Git", "Netlify", "CSS", "Typescript", "JWT", "FastAPI", "Vercel", "Firebase", "Redux", "Ubuntu", "Sass", "Postman", "Bootstrap", "NPM", "PHP"];
@@ -148,7 +149,7 @@ export default function Home() {
   return (
     <div className="flex-1 flex justify-center py-8 min-h-screen mb-8 bg-slate-100">
       <div
-        className="pointer-events-none fixed inset-0 z-0"
+        className="pointer-events-none fixed inset-0 z-0 animate-grid"
         style={{
           backgroundColor: "#fafafa",
           backgroundImage: `
@@ -248,7 +249,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2">
             {projects.map((item, ind) => (
               <div className="border border-gray-300 mr-1 ml-1 mb-2 mt-2 rounded-md hover:shadow-xl cursor-pointer" key={ind}>
-                <img className="w-full object-contain rounded-t-md grayscale-95 hover:grayscale-0 hover:brightness-100 " src={item.hero} alt={item.name} />
+                <img className="w-full object-contain rounded-t-md grayscale-95 hover:grayscale-90 hover:brightness-100 " src={item.hero} alt={item.name} />
                 <div className="p-2 space-y-3">
                   <div className="flex items-center justify-between">
                     <p className="font-semibold">{item.name}</p>
@@ -266,9 +267,9 @@ export default function Home() {
                     {item.url ? <a className="mt-1 cursor-pointer" href={item.url} target="_blank">
                       View Live
                     </a> : <div></div>}
-                    <button className="mt-1 cursor-pointer">
+                    <Link className="mt-1 cursor-pointer" href={`/${item.name.toLowerCase()}`}>
                       More Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
